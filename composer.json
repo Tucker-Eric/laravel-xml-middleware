@@ -1,0 +1,29 @@
+{
+  "name": "tucker-eric/laravel-xml-middleware",
+  "description": "A Laravel Middleware to accept XML requests",
+  "keywords": [
+    "Laravel",
+    "xml-middleware",
+    "xml",
+    "middleware",
+    "xml request",
+    "request"
+  ],
+  "require": {
+    "illuminate/http": "~5.0",
+    "illuminate/support": "~5.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eric Tucker",
+      "email": "tucker.ericm@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "XmlMiddleware\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
