@@ -24,7 +24,7 @@ class XmlRequestServiceProvider extends ServiceProvider
                 return [];
             }
             // Returns the xml input from a request
-            $xml = simplexml_load_string($this->getContent());
+            $xml = simplexml_load_string($this->getContent(), null, LIBXML_NOCDATA);
             $json = json_encode($xml);
 
             return json_decode($json, $assoc);
