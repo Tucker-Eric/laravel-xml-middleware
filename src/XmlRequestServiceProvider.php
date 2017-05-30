@@ -3,7 +3,7 @@
 namespace XmlMiddleware;
 
 use Illuminate\Support\ServiceProvider;
-use Request;
+use Illuminate\Http\Request;
 
 class XmlRequestServiceProvider extends ServiceProvider
 {
