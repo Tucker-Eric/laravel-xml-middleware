@@ -23,7 +23,7 @@ In `app/Http/Kernel.php`
 ```php
     protected $routeMiddleware = [
             /// Other Middleware
-            'xml' => XmlRequestMiddleware::class,
+            'xml' => \XmlMiddleware\XmlRequestMiddleware::class,
         ];
 ```
 
