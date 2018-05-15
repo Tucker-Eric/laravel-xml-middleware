@@ -47,7 +47,9 @@ class MyController extends Controller
         Route::post('my-api-endpoint', 'MyOtherController@store');
     });
 ```
-
+```php
+        Route::post('my-api-endpoint', 'MyOtherController@store')->middleware('xml');
+```
 ### Accessing XML Input With Middleware
 If you are using the middleware it will automatically inject the xml into the request as an array and you you can access the xml data in your controller with the `$request->all()`:
 
