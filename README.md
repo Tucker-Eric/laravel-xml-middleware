@@ -28,7 +28,7 @@ In `app/Http/Kernel.php`
 ```
 
 ### Applying the middleware to routes
-Add the middleware to your as desired
+Add the middleware to your route as desired
 
 #### Controller Middleware
 ```php
