@@ -1,4 +1,10 @@
 # laravel-xml-middleware
+
+[![Latest Stable Version](https://poser.pugx.org/tucker-eric/laravel-xml-middleware/v/stable)](https://packagist.org/packages/tucker-eric/laravel-xml-middleware)
+[![Total Downloads](https://poser.pugx.org/tucker-eric/laravel-xml-middleware/downloads)](https://packagist.org/packages/tucker-eric/laravel-xml-middleware)
+[![License](https://poser.pugx.org/tucker-eric/laravel-xml-middleware/license)](https://packagist.org/packages/tucker-eric/laravel-xml-middleware)
+[![Build Status](https://travis-ci.org/Tucker-Eric/laravel-xml-middleware.svg?branch=master)](https://travis-ci.org/Tucker-Eric/laravel-xml-middleware)
+
 A Laravel Middleware to accept XML requests
 
 ## Configuration
