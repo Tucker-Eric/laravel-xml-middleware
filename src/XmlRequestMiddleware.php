@@ -15,7 +15,7 @@ class XmlRequestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $request->merge($request->xml());
+        $request->merge($request->xml(true));
         
         return $next($request);
     }

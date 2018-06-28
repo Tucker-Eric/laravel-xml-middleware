@@ -20,11 +20,11 @@ class XmlRequestServiceProvider extends ServiceProvider
         });
 
         Request::macro('xml', function ($assoc = true) {
-            if (!$this->isXml()) {
-                return [];
+            if (!$this->isXml() || !$content = $this->getContent()) {
+                return $assoc ? [] : new \stdClass;
             }
             // Returns the xml input from a request
-            $xml = simplexml_load_string($this->getContent(), null, LIBXML_NOCDATA);
+            $xml = simplexml_load_string($content, null, LIBXML_NOCDATA);
             $json = json_encode($xml);
 
             return json_decode($json, $assoc);
