@@ -24,7 +24,7 @@ class XmlRequestMacrosTest extends TestCase
         return [
             ['application/xml', true, '<xml><person>human</person></xml>', ['person' => 'human']],
             ['text/xml', true, '', []],
-            ['application/json', false, '{test: true}', []],
+            ['application/json', false, '{"test": true}', ['test' => true]],
             ['application/x-www-form-urlencoded', false, '', []]
         ];
     }
@@ -72,7 +72,9 @@ class XmlRequestMacrosTest extends TestCase
     {
         $request = $this->createRequest(['CONTENT_TYPE' => $contentType], $content);
         // Make sure we have an empty array before middleware
-        $this->assertEquals([], $request->all());
+        if($isXml) {
+            $this->assertEquals([], $request->all());
+        }
 
         // Apply the middleware
         (new XmlRequestMiddleware)->handle($request, function ($request) {
@@ -81,10 +83,6 @@ class XmlRequestMacrosTest extends TestCase
 
         // If this is xml we want to make sure the content is there
         // If not then it's gonna be an empty array
-        if ($isXml) {
-            $this->assertEquals($expectedContent, $request->all());
-        } else {
-            $this->assertEquals([], $request->all());
-        }
+        $this->assertEquals($expectedContent, $request->all());
     }
 }
