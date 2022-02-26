@@ -7,19 +7,19 @@ use XmlMiddleware\XmlRequestServiceProvider;
 
 class XmlRequestMacrosTest extends TestCase
 {
-    public function setup()
+    public function setUp():void
     {
         if (!Request::hasMacro('xml') || !Request::hasMacro('isXml')) {
             (new XmlRequestServiceProvider(null))->register();
         }
     }
 
-    protected function createRequest($headers = [], $content = null)
+    protected function createRequest($headers = [], $content = null): Request
     {
         return new Request([], [], [], [], [], $headers, $content);
     }
 
-    public function contentTypeDataProvider()
+    public function contentTypeDataProvider(): array
     {
         return [
             ['application/xml', true, '<xml><person>human</person></xml>', ['person' => 'human']],
@@ -35,7 +35,7 @@ class XmlRequestMacrosTest extends TestCase
      * @param string $contentType
      * @param bool $assertion
      */
-    public function testIsXmlMethod($contentType, $assertion)
+    public function testIsXmlMethod(string $contentType, bool$assertion):void
     {
         $this->assertEquals($assertion, $this->createRequest(['CONTENT_TYPE' => $contentType])->isXml());
     }
@@ -43,12 +43,12 @@ class XmlRequestMacrosTest extends TestCase
     /**
      * @dataProvider contentTypeDataProvider
      *
-     * @param $contentType
-     * @param $typeAssertion
-     * @param $content
-     * @param string $expectedContent
+     * @param string $contentType
+     * @param bool $typeAssertion
+     * @param string $content
+     * @param array $expectedContent
      */
-    public function testXmlMethod($contentType, $typeAssertion, $content, $expectedContent = '')
+    public function testXmlMethod(string $contentType, bool $typeAssertion, string $content, array $expectedContent = []):void
     {
         $request = $this->createRequest(['CONTENT_TYPE' => $contentType], $content);
         if ($typeAssertion) {
@@ -63,12 +63,12 @@ class XmlRequestMacrosTest extends TestCase
     /**
      * @dataProvider contentTypeDataProvider
      *
-     * @param $contentType
-     * @param $isXml
-     * @param $content
-     * @param string $expectedContent
+     * @param string $contentType
+     * @param bool $isXml
+     * @param string $content
+     * @param array $expectedContent
      */
-    public function testXmlMiddleware($contentType, $isXml, $content, $expectedContent = '')
+    public function testXmlMiddleware(string $contentType, bool $isXml, string $content, array $expectedContent = []):void
     {
         $request = $this->createRequest(['CONTENT_TYPE' => $contentType], $content);
         // Make sure we have an empty array before middleware
